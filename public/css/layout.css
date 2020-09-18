@@ -1,0 +1,22 @@
+:root {
+    --bgBody-color: #e0e0e0;
+}
+
+body {
+    background-color: var(--bgBody-color);
+}
+
+#container {
+    margin-top: 20px;
+}
+
+#btnSuccess {
+    margin-top: 10px;
+}
+
+#cardBody {
+    padding: 35px;
+}
+#formCat {
+    display: inline;
+}

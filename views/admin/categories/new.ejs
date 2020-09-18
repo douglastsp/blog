@@ -1,0 +1,22 @@
+<%- include ('../../partials/header.ejs') %><!--Loading Footer from partials-->
+<%- include ('../../partials/navbar.ejs') %><!--Loading navbar from partials--> 
+<div class="container" id="container">
+   <div class="card">
+        <div class="card-header">
+            <h3>Criar nova categoria</h3>
+        </div><!--Card-header from bootstrap-->
+        
+        <div id="cardBody" class="card-body">
+            <form action="/categories/save" method="POST">
+                <input 
+                    class="form-control"
+                    type="text" 
+                    name="title" 
+                    placeholder="Defina o nome da nova categoria...">
+                <button id="btnSuccess" class="btn btn-success">Criar</button><!--Btn-Success from Bootstrap-->
+            </form><!--Form-cotrol from bootstrap-->
+        </div><!--Card-body from bootsrap-->
+    </div><!--card from bootstrap-->
+</div><!--Container from bootstrap-->
+
+<%- include ('../../partials/footer.ejs') %><!--Loading Footer from partials--> 

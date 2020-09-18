@@ -1,0 +1,93 @@
+<%- include ('../../partials/header.ejs') %><!--Loading Footer from partials-->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+<%- include ('../../partials/navbar.ejs') %><!--Loading navbar from partials--> 
+<div class="container" id="container">
+   <div class="card">
+        <div class="card-header">
+            <h3>Categorias</h3>
+            <a 
+                href="/admin/categories/new" 
+                class="btn btn-dark">
+                    + Nova Categoria
+            </a>
+
+        </div><!--card-header from bootstrap-->
+        
+       <div id="cardBody" class="card-body">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Titulo</th>
+                        <th>Slug</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% categories.forEach(category => { %> 
+                    <tr>
+                        <th><%= category.id %></th>
+                        <th><%= category.title %></th>
+                        <th><%= category.slug %></th>
+                        <th>
+                            <a 
+                                href="/admin/categories/edit/<%= category.id %> " 
+                                class="btn btn-warning">
+                                    Editar
+                            </a>
+                            <form
+                                id="formCat" 
+                                method="POST" 
+                                action="/categories/delete"
+                                onclick="confirmar(event, this);">
+                                    <input type="hidden" name="id" value="<%= category.id %>"> 
+                                    <button class="btn btn-danger">Deletar</button>
+                                    <div id="dialog-confirm" title="Executar função?"></div>
+                            </form>
+                            
+                        </th>
+                    </tr>
+                    <% }); %> 
+                </tbody>
+            </table><!--table from bootstrap-->
+        </div><!--Card-body from bootsrap-->
+    </div><!--card from bootstrap-->
+</div><!--Container from bootstrap-->
+
+<%- include ('../../partials/footer.ejs') %><!--Loading Footer from partials-->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+<script>
+    //to confirm before delete
+   /* function confirmarDelecao(event, form) {
+        event.preventDefault();
+        var decision = confirm('Tem certeza que deseja deletar essa categoria?');
+        if (decision) {
+            form.submit();
+        } 
+    }*/
+
+   
+    function confirmar(event, form) {
+        event.preventDefault();
+
+        $( "#dialog-confirm" ).dialog({
+        resizable: false,
+        height: "auto",
+        width: 400,
+        modal: true,
+        buttons: {
+            "Sim": function() {
+                $( this ).dialog( "close" );
+                form.submit();
+            },
+            'Não': function() {
+                $( this ).dialog( "close" );
+                console.log('cancelado');
+            }
+        }
+    });
+}
+</script> 

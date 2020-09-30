@@ -4,9 +4,9 @@
 <div class="container" id="container">
    <div class="card">
         <div class="card-header">
-            <h3>Categorias</h3>
+            <h3>Artigos</h3>
             <a 
-                href="/admin/categories/new" 
+                href="/admin/articles/new" 
                 class="btn btn-dark">
                     + Nova Categoria
             </a>
@@ -19,36 +19,14 @@
                     <tr>
                         <th>ID</th>
                         <th>Titulo</th>
+                        <th>Catogoria</th>
                         <th>Slug</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <% categories.forEach(category => { %> 
-                    <tr>
-                        <th><%= category.id %></th>
-                        <th><%= category.title %></th>
-                        <th><%= category.slug %></th>
-                        <th>
-                            <a 
-                                href="/admin/categories/edit/<%= category.id %> " 
-                                class="btn btn-warning">
-                                    Editar
-                            </a>
-                            <form
-                                id="formCat" 
-                                method="POST" 
-                                action="/categories/delete"
-                                onclick="confirmar(event, this);">
-                                    <input type="hidden" name="id" value="<%= category.id %>"> 
-                                    <button class="btn btn-danger">Deletar</button>
-                                    <div id="dialog-confirm" title="Tem certeza que deseja deletar?"></div>
-                            </form>
-                            
-                        </th>
-                    </tr>
-                    <% }); %> 
+                    
                 </tbody>
             </table><!--table from bootstrap-->
         </div><!--Card-body from bootsrap-->

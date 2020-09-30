@@ -6,6 +6,10 @@ body {
     background-color: var(--bgBody-color);
 }
 
+input {
+    margin-bottom: 15px;
+}
+
 #container {
     margin-top: 20px;
 }
